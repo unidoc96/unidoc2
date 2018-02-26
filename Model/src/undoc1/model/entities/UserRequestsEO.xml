@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="UserRequestsEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="USER_REQUESTS"
+  AliasName="UserRequestsEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="UserId"
+    IsNotNull="true"
+    ColumnName="USER_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="USER_REQUESTS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="GroupId"
+    IsNotNull="true"
+    ColumnName="GROUP_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="USER_REQUESTS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="GroupMemberId"
+    IsNotNull="true"
+    ColumnName="GROUP_MEMBER_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="USER_REQUESTS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="RequestDate"
+    ColumnName="REQUEST_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="USER_REQUESTS"/>
+  <Attribute
+    Name="RequestDescribtion"
+    IsQueriable="false"
+    ColumnName="REQUEST_DESCRIBTION"
+    SQLType="CLOB"
+    Type="oracle.jbo.domain.ClobDomain"
+    ColumnType="CLOB"
+    TableName="USER_REQUESTS"/>
+  <AccessorAttribute
+    Name="GroupMembers"
+    Association="undoc1.model.entities.associations.MemberSendUserRequestsASS"
+    AssociationEnd="undoc1.model.entities.associations.MemberSendUserRequestsASS.GroupMembers"
+    AssociationOtherEnd="undoc1.model.entities.associations.MemberSendUserRequestsASS.UserRequests"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Users"
+    Association="undoc1.model.entities.associations.UserHasUserRequestsASS"
+    AssociationEnd="undoc1.model.entities.associations.UserHasUserRequestsASS.Users"
+    AssociationOtherEnd="undoc1.model.entities.associations.UserHasUserRequestsASS.UserRequests"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="UserRequestsPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="USER_REQUESTS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.UserRequestsEO.UserId"/>
+      <Item Value="undoc1.model.entities.UserRequestsEO.GroupId"/>
+      <Item Value="undoc1.model.entities.UserRequestsEO.GroupMemberId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="MemberSendUserRequests">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GROUP_MEMBERS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="MEMBER_SEND_USER_REQUESTS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.UserRequestsEO.GroupId"/>
+      <Item Value="undoc1.model.entities.UserRequestsEO.GroupMemberId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UserHasUserRequests">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="USERS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="USER_HAS_USER_REQUESTS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.UserRequestsEO.UserId"/>
+    </AttrArray>
+  </Key>
+</Entity>

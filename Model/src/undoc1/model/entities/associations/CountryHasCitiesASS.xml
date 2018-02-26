@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CountryHasCitiesASS"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Countries"
+    Cardinality="1"
+    Source="true"
+    Owner="undoc1.model.entities.CountriesEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Countries"/>
+      <Attr Name="_foreignKey" Value="undoc1.model.entities.CountriesEO.CountriesPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.CountriesEO.CountryId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="Cities"
+    Cardinality="-1"
+    Owner="undoc1.model.entities.CitiesEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Cities"/>
+      <Attr Name="_foreignKey" Value="undoc1.model.entities.CitiesEO.CountryHasCities"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.CitiesEO.CountryId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

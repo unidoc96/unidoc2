@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Group1EO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName='"group"'
+  AliasName="Group1EO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="GroupId"
+    IsNotNull="true"
+    ColumnName="GROUP_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName='"group"'
+    PrimaryKey="true"/>
+  <Attribute
+    Name="GroupName"
+    IsNotNull="true"
+    Precision="100"
+    ColumnName="GROUP_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName='"group"'>
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GroupImage"
+    IsQueriable="false"
+    ColumnName="GROUP_IMAGE"
+    SQLType="BLOB"
+    Type="oracle.jbo.domain.BlobDomain"
+    ColumnType="BLOB"
+    TableName='"group"'/>
+  <Attribute
+    Name="GroupDiscribtion"
+    IsQueriable="false"
+    IsNotNull="true"
+    ColumnName="GROUP_DISCRIBTION"
+    SQLType="CLOB"
+    Type="oracle.jbo.domain.ClobDomain"
+    ColumnType="CLOB"
+    TableName='"group"'/>
+  <Attribute
+    Name="OwnerId"
+    IsNotNull="true"
+    ColumnName="OWNER_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName='"group"'/>
+  <Attribute
+    Name="GroupPrivacy"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="GROUP_PRIVACY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName='"group"'>
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="GroupRequests"
+    Association="undoc1.model.entities.associations.GroupHasGroupRequestsASS"
+    AssociationEnd="undoc1.model.entities.associations.GroupHasGroupRequestsASS.GroupRequests"
+    AssociationOtherEnd="undoc1.model.entities.associations.GroupHasGroupRequestsASS.Group1"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="GroupMembers"
+    Association="undoc1.model.entities.associations.GroubHasMembersASS"
+    AssociationEnd="undoc1.model.entities.associations.GroubHasMembersASS.GroupMembers"
+    AssociationOtherEnd="undoc1.model.entities.associations.GroubHasMembersASS.Group1"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Posts"
+    Association="undoc1.model.entities.associations.GroupContainsPostsASS"
+    AssociationEnd="undoc1.model.entities.associations.GroupContainsPostsASS.Posts"
+    AssociationOtherEnd="undoc1.model.entities.associations.GroupContainsPostsASS.Group1"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Users"
+    Association="undoc1.model.entities.associations.UserCreateGroupsASS"
+    AssociationEnd="undoc1.model.entities.associations.UserCreateGroupsASS.Users"
+    AssociationOtherEnd="undoc1.model.entities.associations.UserCreateGroupsASS.Group1"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="GroupPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="GROUP_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.Group1EO.GroupId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UserCreateGroups">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="USERS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="USER_CREATE_GROUPS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.Group1EO.OwnerId"/>
+    </AttrArray>
+  </Key>
+</Entity>

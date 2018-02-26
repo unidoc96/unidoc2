@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="userLoginVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  SelectList="UsersEO.USER_ID, 
+       UsersEO.PASSWORD, 
+       UsersEO.USERNAME"
+  FromList="USERS UsersEO"
+  Where="UsersEO.PASSWORD = :password_bnd 
+and 
+UsersEO.USERNAME = :username_bnd"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="undoc1.model.views_objects.userLoginVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="password_bnd"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="username_bnd"
+    Kind="where"
+    Type="java.lang.String"/>
+  <EntityUsage
+    Name="UsersEO"
+    Entity="undoc1.model.entities.UsersEO"/>
+  <ViewAttribute
+    Name="UserId"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserId"
+    EntityUsage="UsersEO"
+    AliasName="USER_ID"/>
+  <ViewAttribute
+    Name="Password"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Password"
+    EntityUsage="UsersEO"
+    AliasName="PASSWORD"/>
+  <ViewAttribute
+    Name="Username"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Username"
+    EntityUsage="UsersEO"
+    AliasName="USERNAME"/>
+  <ViewLinkAccessor
+    Name="UserRecommendedPosts"
+    ViewLink="undoc1.model.views_objects.views_links.Login_UserRecommendedPostsVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="undoc1.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

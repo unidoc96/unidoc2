@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="UserRecommendedPostsVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="undoc1.model.views_objects.UserRecommendedPostsVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="ID"
+    Kind="where"
+    Type="java.lang.Integer"/>
+  <SQLQuery><![CDATA[SELECT  
+    PostsEO.POST_DATE,  
+    PostsEO.POST_ID,  
+    PostsEO.POST_IMAGE,  
+    PostsEO.POST_TEXT,  
+    PostsEO.POST_VIDEO  
+FROM  
+    FOLLOWES FollowesEO,  
+    GROUP_MEMBERS GroupMembersEO,  
+    POSTS PostsEO,  
+    USERS  
+WHERE  
+    PostsEO.PUBLISHER_ID = :ID 
+    OR PostsEO.PUBLISHER_ID IN ( 
+        SELECT  
+            FOLLOWES.USER_ID USER_ID  
+        FROM  
+            FOLLOWES  
+        WHERE  
+            FOLLOWES.FOLLOWER_ID = :ID 
+    ) OR PostsEO.GROUP_ID IN ( 
+        SELECT  
+            GROUP_MEMBERS.GROUP_ID GROUP_ID  
+        FROM  
+            GROUP_MEMBERS  
+        WHERE  
+            GROUP_MEMBERS.GROUP_MEMBER_ID = :ID 
+    ) OR PostsEO.DEPARTMENT_ID = ( 
+        SELECT  
+            USERS.DEPARTMENT_ID DEPARTMENT_ID  
+        FROM  
+            USERS  
+        WHERE  
+            USERS.USER_ID = :ID 
+    )]]></SQLQuery>
+  <EntityUsage
+    Name="FollowesEO"
+    Entity="undoc1.model.entities.FollowesEO"/>
+  <EntityUsage
+    Name="GroupMembersEO"
+    Entity="undoc1.model.entities.GroupMembersEO"
+    ReadOnly="true"
+    DeleteParticipant="false">
+    <DesignTime>
+      <Attr Name="_customjoin" Value="true"/>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="PostsEO"
+    Entity="undoc1.model.entities.PostsEO"
+    ReadOnly="true"
+    DeleteParticipant="false">
+    <DesignTime>
+      <Attr Name="_customjoin" Value="true"/>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="PostDate"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PostDate"
+    EntityUsage="PostsEO"
+    AliasName="POST_DATE"/>
+  <ViewAttribute
+    Name="PostId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PostId"
+    EntityUsage="PostsEO"
+    AliasName="POST_ID"/>
+  <ViewAttribute
+    Name="PostImage"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="PostImage"
+    EntityUsage="PostsEO"
+    AliasName="POST_IMAGE"/>
+  <ViewAttribute
+    Name="PostText"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="PostText"
+    EntityUsage="PostsEO"
+    AliasName="POST_TEXT"/>
+  <ViewAttribute
+    Name="PostVideo"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="PostVideo"
+    EntityUsage="PostsEO"
+    AliasName="POST_VIDEO"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="undoc1.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

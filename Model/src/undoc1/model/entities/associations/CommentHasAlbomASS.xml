@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CommentHasAlbomASS"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Comments"
+    Cardinality="1"
+    Source="true"
+    Owner="undoc1.model.entities.CommentsEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Comments"/>
+      <Attr Name="_foreignKey" Value="undoc1.model.entities.CommentsEO.CommentsPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.CommentsEO.CommentId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="CommentAlbom"
+    Cardinality="-1"
+    Owner="undoc1.model.entities.CommentAlbomEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CommentAlbom"/>
+      <Attr Name="_foreignKey" Value="undoc1.model.entities.CommentAlbomEO.CommentHasAlbom"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.CommentAlbomEO.CommentId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

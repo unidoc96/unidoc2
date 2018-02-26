@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Relation40ASS"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Cities"
+    Cardinality="1"
+    Source="true"
+    Owner="undoc1.model.entities.CitiesEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Cities"/>
+      <Attr Name="_foreignKey" Value="undoc1.model.entities.CitiesEO.CitiesCityIdUn"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.CitiesEO.CityId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="Univers"
+    Cardinality="-1"
+    Owner="undoc1.model.entities.UniversEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Univers"/>
+      <Attr Name="_foreignKey" Value="undoc1.model.entities.UniversEO.Relation40"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.UniversEO.CityId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

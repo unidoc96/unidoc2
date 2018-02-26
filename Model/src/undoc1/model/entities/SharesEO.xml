@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SharesEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SHARES"
+  AliasName="SharesEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="UsersUserId"
+    IsNotNull="true"
+    ColumnName="USERS_USER_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SHARES"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="PostsPostId"
+    IsNotNull="true"
+    ColumnName="POSTS_POST_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SHARES"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="ShareTime"
+    IsNotNull="true"
+    ColumnName="SHARE_TIME"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="SHARES"/>
+  <AccessorAttribute
+    Name="Posts"
+    Association="undoc1.model.entities.associations.SharesPostsFkASS"
+    AssociationEnd="undoc1.model.entities.associations.SharesPostsFkASS.Posts"
+    AssociationOtherEnd="undoc1.model.entities.associations.SharesPostsFkASS.Shares"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Users"
+    Association="undoc1.model.entities.associations.SharesUsersFkASS"
+    AssociationEnd="undoc1.model.entities.associations.SharesUsersFkASS.Users"
+    AssociationOtherEnd="undoc1.model.entities.associations.SharesUsersFkASS.Shares"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SharesPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SHARES_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.SharesEO.UsersUserId"/>
+      <Item Value="undoc1.model.entities.SharesEO.PostsPostId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SharesPostsFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="POSTS_PUBLIC_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SHARES_POSTS_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.SharesEO.PostsPostId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SharesUsersFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="USERS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SHARES_USERS_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.SharesEO.UsersUserId"/>
+    </AttrArray>
+  </Key>
+</Entity>

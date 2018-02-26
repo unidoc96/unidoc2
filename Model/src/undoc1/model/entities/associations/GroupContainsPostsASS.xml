@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GroupContainsPostsASS"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Group1"
+    Cardinality="1"
+    Source="true"
+    Owner="undoc1.model.entities.Group1EO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Group1"/>
+      <Attr Name="_foreignKey" Value="undoc1.model.entities.Group1EO.GroupPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.Group1EO.GroupId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="Posts"
+    Cardinality="-1"
+    Owner="undoc1.model.entities.PostsEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Posts"/>
+      <Attr Name="_foreignKey" Value="undoc1.model.entities.PostsEO.GroupContainsPosts"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="undoc1.model.entities.PostsEO.GroupId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>
